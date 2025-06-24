@@ -7,6 +7,7 @@ terraform {
 }
 
 inputs = {
+  name                = values.name
   vpc_cidr            = values.vpc_cidr
   vpc_azs             = values.vpc_azs
   vpc_public_subnets  = values.vpc_public_subnets
