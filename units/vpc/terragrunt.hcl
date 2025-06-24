@@ -12,8 +12,3 @@ inputs = {
   vpc_public_subnets  = values.vpc_public_subnets
   vpc_private_subnets = values.vpc_private_subnets
 }
-
-outputs = {
-  vpc_id              = terraform.output.vpc_id
-  vpc_name            = terraform.output.vpc_name
-}
