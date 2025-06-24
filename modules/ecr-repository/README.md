@@ -1,6 +1,6 @@
-# DynamoDB Table Module
+# ECR Repository Module
 
-This is an example OpenTofu/Terraform module that deploys a [DynamoDB Table](https://aws.amazon.com/dynamodb/).
+This is an example OpenTofu/Terraform module that deploys an [ECR Repository](https://aws.amazon.com/ecr/).
 
 See the [root README](/README.md) for instructions on how to provision this module.
 

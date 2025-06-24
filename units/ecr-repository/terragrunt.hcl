@@ -11,15 +11,14 @@ terraform {
   //
   // Assume that a user consuming this unit will exclusively have access
   // to the directory this file is in, and nothing else in this repository.
-  source = "git::git@github.com:SleepyDeb/terragrunt-aws-infrastructure-catalog.git//modules/dynamodb-app-table?ref=${values.version}"
+  source = "git::git@github.com:SleepyDeb/terragrunt-aws-infrastructure-catalog.git//modules/ecr-repository?ref=${values.version}"
 }
 
 inputs = {
-  # Required inputs
-  name              = values.name
-  hash_key          = values.hash_key
-  hash_key_type     = values.hash_key_type
+  name = values.name
 
-  # Optional inputs
-  billing_mode      = try(values.billing_mode, "PAY_PER_REQUEST")
+  force_delete         = try(values.force_delete, false)
+  image_tag_mutability = try(values.image_tag_mutability, "MUTABLE")
+  encryption_type      = try(values.encryption_type, "AES256")
+  scan_on_push         = try(values.scan_on_push, true)
 }
