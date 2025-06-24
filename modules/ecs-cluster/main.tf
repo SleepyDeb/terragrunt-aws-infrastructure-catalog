@@ -116,7 +116,7 @@ module "autoscaling" {
   protect_from_scale_in = true
 
   tags = var.tags
-}
+} `
 
 module "autoscaling_sg" {
   source  = "terraform-aws-modules/security-group/aws"
