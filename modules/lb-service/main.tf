@@ -174,7 +174,7 @@ module "alb" {
     }
   }
 
-  tags = local.tags
+  tags = var.tags
 }
 
 ################################################################################
@@ -184,21 +184,21 @@ module "alb" {
 data "aws_vpc" "vpc" {
   filter {
     name   = "tag:Name"
-    values = ["core-infra"]
+    values = ["${var.vpc_name}"]
   }
 }
 
 data "aws_subnets" "public" {
   filter {
     name   = "tag:Name"
-    values = ["core-infra-public-*"]
+    values = ["${var.vpc_name}-public-*"]
   }
 }
 
 data "aws_subnets" "private" {
   filter {
     name   = "tag:Name"
-    values = ["core-infra-private-*"]
+    values = ["${var.vpc_name}-private-*"]
   }
 }
 
@@ -208,7 +208,7 @@ data "aws_subnet" "private_cidr" {
 }
 
 data "aws_ecs_cluster" "core_infra" {
-  cluster_name = "core-infra"
+  cluster_name = "${var.capacity_provider_name}"
 }
 
 data "aws_service_discovery_dns_namespace" "this" {
