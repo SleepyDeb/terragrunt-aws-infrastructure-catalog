@@ -8,6 +8,11 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
+  type        = string
+}
+
 variable "azs" {
   description = "List of availability zones"
   type        = list(string)
@@ -22,26 +27,25 @@ variable "tags" {
   }
 }
 
-
-variable "node_group_instance_types" {
+variable "instance_type" {
   description = "EC2 instance types for the ECS node group"
   type        = string
-  default     = ["t3.small"]
+  default     = "t3.small"
 }
 
-variable "node_group_desired_capacity" {
+variable "desired_capacity" {
   description = "Desired number of worker nodes"
   type        = number
   default     = 2
 }
 
-variable "node_group_min_capacity" {
+variable "min_capacity" {
   description = "Minimum number of worker nodes"
   type        = number
   default     = 1
 }
 
-variable "node_group_max_capacity" {
+variable "max_capacity" {
   description = "Maximum number of worker nodes"
   type        = number
   default     = 3

@@ -23,7 +23,7 @@ module "ecs_service" {
   source  = "terraform-aws-modules/ecs/aws//modules/service"
   version = "~> 5.6"
 
-  name          = local.name
+  name          = var.name
   desired_count = 3
   cluster_arn   = data.aws_ecs_cluster.core_infra.arn
 
@@ -32,7 +32,7 @@ module "ecs_service" {
   requires_compatibilities = ["EC2"]
   capacity_provider_strategy = {
     default = {
-      capacity_provider = "core-infra" # needs to match name of capacity provider
+      capacity_provider = var.capacity_provider_name
       weight            = 1
       base              = 1
     }
