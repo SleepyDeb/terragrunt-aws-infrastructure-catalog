@@ -1,22 +1,48 @@
 variable "name" {
-  description = "The name of the ECS cluster"
+  description = "The name prefix for all resources"
   type        = string
 }
 
-variable "enable_ec2_capacity_provider" {
-  description = "Whether to enable EC2 capacity provider in addition to Fargate"
-  type        = bool
-  default     = false
+variable "vpc_id" {
+  description = "VPC ID where to deploy the cluster"
+  type        = string
 }
 
-variable "enable_container_insights" {
-  description = "Enable CloudWatch Container Insights for the ECS cluster"
-  type        = bool
-  default     = true
+variable "azs" {
+  description = "List of availability zones"
+  type        = list(string)
+  default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 }
 
-variable "log_retention_in_days" {
-  description = "Number of days to retain CloudWatch logs for ECS tasks"
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  type        = map(string)
+  default     = {
+    Architecture = "Sample Architecture"
+  }
+}
+
+
+variable "node_group_instance_types" {
+  description = "EC2 instance types for the ECS node group"
+  type        = string
+  default     = ["t3.small"]
+}
+
+variable "node_group_desired_capacity" {
+  description = "Desired number of worker nodes"
   type        = number
-  default     = 30
+  default     = 2
+}
+
+variable "node_group_min_capacity" {
+  description = "Minimum number of worker nodes"
+  type        = number
+  default     = 1
+}
+
+variable "node_group_max_capacity" {
+  description = "Maximum number of worker nodes"
+  type        = number
+  default     = 3
 }
