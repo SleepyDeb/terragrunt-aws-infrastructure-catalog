@@ -3,27 +3,34 @@ variable "name" {
   type        = string
 }
 
-variable "vpc_cidr_block" {
-  description = "The CIDR block for the VPC"
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
   type        = string
+  default     = "10.0.0.0/16"
 }
 
-variable "availability_zones" {
-  description = "List of availability zones to use for subnets"
+variable "vpc_azs" {
+  description = "List of availability zones"
   type        = list(string)
+  default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 }
 
-variable "public_subnet_cidrs" {
-  description = "List of CIDR blocks for public subnets, one per AZ"
+variable "vpc_public_subnets" {
+  description = "List of public subnet CIDRs"
   type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
 
-variable "private_subnet_cidrs" {
-  description = "List of CIDR blocks for private subnets, one per AZ"
+variable "vpc_private_subnets" {
+  description = "List of private subnet CIDRs"
   type        = list(string)
+  default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 }
 
-variable "eip_allocation_ids" {
-  description = "List of Elastic IP allocation IDs for NAT Gateways, one per public subnet"
-  type        = list(string)
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  type        = map(string)
+  default     = {
+    Architecture = "Sample Architecture"
+  }
 }
