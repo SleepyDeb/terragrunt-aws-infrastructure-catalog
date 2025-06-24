@@ -5,5 +5,5 @@ output "vpc_id" {
 
 output "vpc_name" {
   description = "The Name of the VPC"
-  value       = module.vpc.vpc_name
+  value       = module.vpc.name
 }
