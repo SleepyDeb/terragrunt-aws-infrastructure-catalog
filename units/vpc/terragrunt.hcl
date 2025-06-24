@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "git::git@github.com:org/aws-infrastructure-catalog.git//modules/vpc?ref=${values.version}"
+  source = "git::git@github.com:org/terragrunt-aws-infrastructure-catalog.git//modules/vpc?ref=${values.version}"
 }
 
 inputs = {
