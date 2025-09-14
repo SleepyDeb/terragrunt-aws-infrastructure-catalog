@@ -4,16 +4,25 @@ variable "vpc_id" {
   type        = string
 }
 
+# INPUT VARIABLES
+variable "default" {
+  description = "Should import the default VPC if no VPC ID is provided"
+  type        = bool
+  default     = false
+}
+
+
 # RESOURCE DEFINITIONS
 # reference: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc
 data "aws_vpc" "vpc" {
   id = var.vpc_id
+  default = var.default
 }
 
 data "aws_subnets" "subnets" {
   filter {
     name   = "vpc-id"
-    values = [var.vpc_id]
+    values = [data.aws_vpc.vpc.id]
   }
 }
 
