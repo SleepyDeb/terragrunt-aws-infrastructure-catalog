@@ -51,4 +51,3 @@ output "vpc_subnets" {
   description = "List of all Subnets"
   value       = data.aws_subnet.subnets
 }
-
