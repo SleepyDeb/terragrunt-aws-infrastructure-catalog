@@ -35,11 +35,11 @@ output "vpc_name" {
 
 output "vpc_subnet_ids" {
   description = "List of all Subnet IDs"
-  value       = module.vpc_subnets.subnets.ids
+  value       = module.aws_subnets.subnets.ids
 }
 
 output "vpc_subnets" {
   description = "List of all Subnets"
-  value       = module.vpc_subnet.subnets
+  value       = module.aws_subnet.subnets
 }
 
