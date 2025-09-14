@@ -8,4 +8,5 @@ terraform {
 
 inputs = {
   vpc_id = values.vpc_id
+  default = values.default
 }
