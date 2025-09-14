@@ -25,12 +25,12 @@ data "aws_subnet" "subnets" {
 # OUTPUTS
 output "vpc_id" {
   description = "The ID of the VPC"
-  value       = data.aws_vpc.vpc_id
+  value       = data.aws_vpc.vpc.vpc_id
 }
 
 output "vpc_name" {
   description = "The Name of the VPC"
-  value       = data.aws_vpc.name
+  value       = data.aws_vpc.vpc.name
 }
 
 output "vpc_subnet_ids" {
