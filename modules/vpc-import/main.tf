@@ -30,7 +30,7 @@ output "vpc_id" {
 
 output "vpc_name" {
   description = "The Name of the VPC"
-  value       = data.aws_vpc.vpc.tags.name
+  value       = lookup(data.aws_vpc.vpc.tags, "name", null)
 }
 
 output "vpc_subnet_ids" {
